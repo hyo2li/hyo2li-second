@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@property --bg-inner {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #111111;
+}
+
+@property --bg-outer {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #111111;
+}
+
+body {
+  --bg-inner: #111;
+  --bg-outer: #111;
+
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(800px circle at center, var(--bg-inner), var(--bg-outer));
+  transition: --bg-inner 0.5s ease, --bg-outer 0.5s ease;
+}
+
+body:has(.black:focus) {
+  --bg-inner: #333;
+  --bg-outer: #111;
+}
+body:has(.green:focus) {
+  --bg-inner: #082400;
+  --bg-outer: #111;
+}
+body:has(.yellow:focus) {
+  --bg-inner: #222400;
+  --bg-outer: #111;
+}
+body:has(.blue:focus) {
+  --bg-inner: #001024;
+  --bg-outer: #111;
+}
+
+li {
+  list-style: none;
+}
+
+.nav-bg {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-contianer {
+  width: 100%;
+  max-width: 1600px;
+  height: 60px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  gap: 70px;
+}
+
+.title {
+  display: flex;
+  a {
+    font-size: 28px;
+    font-family: "Alan Sans", sans-serif;
+    font-weight: bold;
+  }
+}
+
+.menu {
+  padding-right: 300px;
+  ul {
+    display: flex;
+    gap: 32px;
+
+    li {
+      cursor: pointer;
+      transition: font-weight 0.2s ease;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.icons-container {
+  display: flex;
+  gap: 6px;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #444;
+    }
+  }
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  height: calc(100% - 100px);
+  display: grid;
+  grid-template-columns: 340px 1fr 340px;
+  grid-template-rows: 1fr;
+}
+
+.title-container, .img-container, .button-container {
+  padding: 20px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding-bottom: 80px;
+}
+
+.sub-text {
+  padding-top: 60px;
+  color: darkgray;
+}
+.text {
+  padding-top: 24px;
+  h4 {
+    color: white;
+    font-size: 28px;
+  }
+  p {
+    color: darkgray;
+  }
+}
+.main-text {
+  padding-bottom: 400px;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.img-container {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    display: block;
+    position: absolute;
+    width: 400px;
+    transition: transform 0.6s ease, opacity 0.4s ease;
+    transform: translateY(-580px);
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+:has(.black:focus) .black-iphone {
+  transform: translateY(0);
+  opacity: 1;
+}
+:has(.green:focus) .black-iphone {
+  transform: translateY(580px);
+  opacity: 0;
+}
+:has(.green:focus) .green-iphone {
+  transform: translateY(0);
+  opacity: 1;
+}
+:has(.yellow:focus) .green-iphone {
+  transform: translateY(580px);
+  opacity: 0;
+}
+:has(.yellow:focus) .yellow-iphone {
+  transform: translateY(0);
+  opacity: 1;
+}
+:has(.blue:focus) .yellow-iphone {
+  transform: translateY(580px);
+  opacity: 0;
+}
+:has(.blue:focus) .blue-iphone {
+  transform: translateY(0);
+  opacity: 1;
+}
+:has(.black:focus) .blue-iphone {
+  transform: translateY(580px);
+  opacity: 0;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn {
+  background-color: inherit;
+  width: 130px;
+  height: 56px;
+  border: 1px solid white;
+  border-radius: 27px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease, border-color 0.2s ease, font-weight 0.3s ease;
+}
+
+.black, .green, .yellow, .blue {
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 0.5px white;
+    font-weight: bold;
+  }
+}
+
+.black:focus {
+  background-color: black;
+  color: white;
+  border-color: transparent;
+}
+.green:focus {
+  background-color: rgb(0, 58, 0);
+  color: white;
+  border-color: transparent;
+}
+.yellow:focus {
+  background-color: rgb(116, 116, 0);
+  color: white;
+  border-color: transparent;
+}
+.blue:focus {
+  background-color: rgb(0, 0, 119);
+  color: white;
+  border-color: transparent;
+}
